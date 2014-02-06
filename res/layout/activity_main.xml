@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eee"
+    android:orientation="vertical" 
+    android:gravity="center_horizontal" >
+    
+	<RelativeLayout 
+        android:id="@+id/login_top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar">
+
+        <TextView
+            android:id="@+id/demo_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="微客服(客服)Demo"
+           />      
+    </RelativeLayout>
+
+    <Button 
+        android:id="@+id/chat_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_top_layout" 
+        android:layout_marginTop="10dp"       
+        android:text="咨询客服"
+        />
+    <Button 
+        android:id="@+id/queue_chat_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_button" 
+        android:layout_marginTop="10dp"       
+        android:text="排队咨询客服"
+        />
+    <Button 
+        android:id="@+id/faq_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/queue_chat_button" 
+        android:layout_marginTop="10dp"       
+        android:text="常见问题FAQ"
+        />
+    
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
