@@ -21,21 +21,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
+/**
+ * 微客服(AppKeFu.com)
+ * 
+ * 微客服，集成到您App里的在线客服
+ * 国内首款App里的在线客服，支持文字、表情、图片、语音聊天。 立志为移动开发者提供最好的在线客服
+ * 
+ * 技术交流QQ群:48661516
+ * 
+ * @author jack ning, http://github.com/pengjinning
+ *
+ */
 public class MainActivity extends Activity implements OnClickListener{
   
-	/*
-	 提示：如果已经运行过旧版的Demo，请先在手机上删除原先的App再重新运行此工程
-	 更多使用帮助参见：http://appkefu.com/AppKeFu/tutorial-android.html
-	
-	 简要使用说明：
-	 第1步：到http://appkefu.com/AppKeFu/admin/，注册/创建应用/分配客服，并将获取的appkey填入AnroidManifest.xml
-	 		中的com.appkefu.lib.appkey
-	 第2步：用真实的客服名初始化mKefuUsername
-	 第3步：调用 KFInterfaces.visitorLogin(this); 函数登录
-	 第4步：调用chatWithKeFu(mKefuUsername);与客服会话，其中mKefuUsername需要替换为真实客服名
-	 第5步：(可选)
-      	//设置昵称，否则在客服客户端 看到的会是一串字符串(必须在登录成功之后才能调用，才有效)
-      	KFInterfaces.setVisitorNickname("访客1", this);
+	/**
+	 * 提示：如果已经运行过旧版的Demo，请先在手机上删除原先的App再重新运行此工程
+	 * 更多使用帮助参见：http://appkefu.com/AppKeFu/tutorial-android.html
+	 * 
+	 * 简要使用说明：
+	 * 第1步：到http://appkefu.com/AppKeFu/admin/，注册/创建应用/分配客服，并将获取的appkey填入AnroidManifest.xml
+	 * 		中的com.appkefu.lib.appkey
+	 * 第2步：用真实的客服名初始化mKefuUsername
+	 * 第3步：调用 KFInterfaces.visitorLogin(this); 函数登录
+	 * 第4步：调用chatWithKeFu(mKefuUsername);与客服会话，其中mKefuUsername需要替换为真实客服名
+	 * 第5步：(可选)
+     *  	//设置昵称，否则在客服客户端 看到的会是一串字符串(必须在登录成功之后才能调用，才有效)
+     *  	KFInterfaces.setVisitorNickname("访客1", this);
 	 */            
 	 
 	private TextView mTitle;
