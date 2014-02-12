@@ -7,6 +7,7 @@
     android:background="@drawable/appkefu_chat_bg_default" >
 
     <!-- 标题栏 -->
+
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
@@ -46,7 +47,7 @@
     </RelativeLayout>
 
     <!-- 聊天内容 listview -->
-    <ListView
+    <com.appkefu.lib.utils.KFPullToRefreshListView
         android:id="@+id/listview"
         android:scrollbars="vertical" 
         android:transcriptMode="alwaysScroll" 

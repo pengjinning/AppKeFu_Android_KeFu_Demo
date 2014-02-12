@@ -32,19 +32,21 @@
         android:layout_marginTop="10dp"       
         android:text="咨询客服"
         />
-    <Button 
+    <!-- 
+        <Button 
         android:id="@+id/queue_chat_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/chat_button" 
         android:layout_marginTop="10dp"       
-        android:text="排队咨询客服"
+        android:text="排队咨询客服(测试)"
         />
+     -->
     <Button 
         android:id="@+id/faq_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/queue_chat_button" 
+        android:layout_below="@+id/chat_button" 
         android:layout_marginTop="10dp"       
         android:text="常见问题FAQ"
         />
