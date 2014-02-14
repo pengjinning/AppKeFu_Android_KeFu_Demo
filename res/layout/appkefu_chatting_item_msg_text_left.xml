@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/iv_userhead"
+            android:layout_marginLeft="10dp"
             android:layout_alignParentTop="true"            
             android:autoLink="web"
             android:background="@drawable/appkefu_chatfrom_bg" />

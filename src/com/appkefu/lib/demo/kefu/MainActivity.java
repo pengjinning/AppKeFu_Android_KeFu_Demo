@@ -54,7 +54,6 @@ public class MainActivity extends Activity implements OnClickListener{
 	//private Button 	 mQChatBtn;
 	private Button   mFAQBtn;
 	
-	
 	//客服用户名，需要填写为真实的客服用户名，需要到管理后台(http://appkefu.com/AppKeFu/admin/),分配
 	private String 			  mKefuUsername;
 	

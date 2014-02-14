@@ -85,16 +85,26 @@
             </intent-filter>
         </service>
         
+        <!-- 获取OpenUDID, 专用于客服 -->
+        <service android:name="org.OpenUDID.OpenUDID_service" >
+            <intent-filter>
+                <action android:name="org.openudid.GETUDID" />
+            </intent-filter>
+        </service>        
+        
         <!-- 监听网络变化 -->
         <receiver android:name="com.appkefu.lib.receivers.KFNetworkConnectivityReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver>   
+        </receiver> 
         
-        <!-- 检测链接状态 -->
-        <receiver android:name="com.appkefu.lib.receivers.KFAlarmReceiver"/>
-        
+        <receiver android:name="com.appkefu.lib.receivers.KFAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.appkefu.lib.action.LOGIN_ALARM" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
