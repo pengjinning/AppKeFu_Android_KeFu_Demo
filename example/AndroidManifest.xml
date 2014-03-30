@@ -4,15 +4,15 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="21" />
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -30,17 +30,17 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Anim_style2" >
-        
         <activity
-            android:name=".MainActivity"
+            android:name="com.appkefu.lib.demo.kefu.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- 请到 http://appkefu.com/AppKeFu/admin/ 申请appkey-->
+        <!-- 请到 http://appkefu.com/AppKeFu/admin/ 申请appkey -->
         <meta-data
             android:name="com.appkefu.lib.appkey"
             android:value="6f8103225b6ca0cfec048ecc8702dbce" />
@@ -50,79 +50,67 @@
         <!-- 队列会话窗口，可通过修改layout问题appkefu_qchat_activity.xml自定义窗口UI -->
         <activity android:name="com.appkefu.lib.ui.activity.KFQChatActivity" />
         <!-- 常见问题FAQ窗口 -->
-        <activity android:name="com.appkefu.lib.ui.activity.KFFAQSectionsActivity"/>
+        <activity android:name="com.appkefu.lib.ui.activity.KFFAQSectionsActivity" />
         <activity android:name="com.appkefu.lib.ui.activity.KFFAQActivity" />
         <activity android:name="com.appkefu.lib.ui.activity.KFFAQDetailActivity" />
         <!-- 客服个人资料窗口 -->
-        <activity android:name="com.appkefu.lib.ui.activity.KFProfileActivity"/>
-        <activity android:name="com.appkefu.lib.ui.activity.KFQProfileActivity"/>
+        <activity android:name="com.appkefu.lib.ui.activity.KFProfileActivity" />
+        <activity android:name="com.appkefu.lib.ui.activity.KFQProfileActivity" />
         <!-- 验证消息窗口，可通过修改layout文件appkefu_activity_subscribe_notification.xml自定义窗口UI -->
         <activity android:name="com.appkefu.lib.ui.activity.KFSubscribeNotificationActivity" />
-		<!-- 群聊 -->
-        <activity android:name="com.appkefu.lib.ui.activity.KFMUCChatActivity"/>
-		<activity android:name="com.appkefu.lib.ui.activity.KFMUCProfileActivity"/>
-		<!-- 选择发送图片 -->
-        <activity android:name="com.appkefu.lib.ui.activity.KFSelectPicActivity"
+        <!-- 群聊 -->
+        <activity android:name="com.appkefu.lib.ui.activity.KFMUCChatActivity" />
+        <activity android:name="com.appkefu.lib.ui.activity.KFMUCProfileActivity" />
+        <!-- 选择发送图片 -->
+        <activity
+            android:name="com.appkefu.lib.ui.activity.KFSelectPicActivity"
             android:theme="@style/appkefu_dialog_style_bottom" />
-        
+
         <!-- 发送语音辅助service -->
         <service
             android:name="com.appkefu.lib.soundrecorder.KFRecorderService"
-            android:exported="true"/>     
-        
-        <!-- 主service -->       
-        <service android:name="com.appkefu.lib.service.KFMainService" android:exported="true">
+            android:exported="true" />
+
+        <!-- 主service -->
+        <service
+            android:name="com.appkefu.lib.service.KFMainService"
+            android:exported="true" >
             <intent-filter>
-                
                 <action android:name="com.appkefu.lib.action.CONNECT" />
                 <action android:name="com.appkefu.lib.action.DISCONNECT" />
                 <action android:name="com.appkefu.lib.action.TOGGLE" />
                 <action android:name="com.appkefu.lib.action.SEND" />
-                
-                <action android:name="com.appkefu.lib.action.NETWORK_STATUS_CHANGED"/>
+                <action android:name="com.appkefu.lib.action.NETWORK_STATUS_CHANGED" />
                 <action android:name="com.appkefu.lib.action.XMPP.MESSAGE_RECEIVED" />
-
             </intent-filter>
         </service>
-        
+
         <!-- 获取OpenUDID, 专用于客服 -->
         <service android:name="org.OpenUDID.OpenUDID_service" >
             <intent-filter>
                 <action android:name="org.openudid.GETUDID" />
             </intent-filter>
-        </service>        
-        
+        </service>
+
         <!-- 监听网络变化 -->
-        <receiver android:name="com.appkefu.lib.receivers.KFNetworkConnectivityReceiver">
+        <receiver android:name="com.appkefu.lib.receivers.KFNetworkConnectivityReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver> 
-        
-        <receiver android:name="com.appkefu.lib.receivers.KFAlarmReceiver">
+        </receiver>
+        <receiver android:name="com.appkefu.lib.receivers.KFAlarmReceiver" >
             <intent-filter>
                 <action android:name="com.appkefu.lib.action.LOGIN_ALARM" />
             </intent-filter>
         </receiver>
 
+        <activity android:name="com.appkefu.lib.demo.kefu.FreeAPIDemoActivity"/>
+        <activity android:name="com.appkefu.lib.demo.kefu.VIPAPIDemoActivity"/>
+        <activity android:name="com.appkefu.lib.demo.kefu.VIPAPIDemoCallbackActivity"/>
+        <activity android:name="com.appkefu.lib.demo.kefu.TagListActivity"/>
+        <activity android:name="com.appkefu.lib.demo.kefu.ChangeTagActivity"/>
+        <activity android:name="com.appkefu.lib.demo.kefu.MessageActivity"/>
+        
     </application>
 
 </manifest>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

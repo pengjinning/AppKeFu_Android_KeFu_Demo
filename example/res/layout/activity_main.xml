@@ -25,31 +25,34 @@
     </RelativeLayout>
 
     <Button 
-        android:id="@+id/chat_button"
+        android:id="@+id/free_api_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_top_layout" 
         android:layout_marginTop="10dp"       
-        android:text="咨询客服"
+        android:text="免费接口"
         />
-    <!-- 
-        <Button 
-        android:id="@+id/queue_chat_button"
+
+    <Button 
+        android:id="@+id/vip_api_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chat_button" 
+        android:layout_below="@+id/free_api_button" 
         android:layout_marginTop="10dp"       
-        android:text="排队咨询客服(测试)"
+        android:text="高级接口"
         />
-     -->
-    <Button 
+
+    <!-- 
+        <Button 
         android:id="@+id/faq_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chat_button" 
+        android:layout_below="@+id/queue_chat_button" 
         android:layout_marginTop="10dp"       
         android:text="常见问题FAQ"
         />
+     -->
+
     
 </RelativeLayout>
 

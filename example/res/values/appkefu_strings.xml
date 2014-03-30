@@ -82,6 +82,31 @@
     <string name="appkefu_load_empty">暂无数据</string>
     <string name="appkefu_load_error">加载数据出错</string>
     
+    <string name="appkefu_comment_title">调查</string>
+    <string name="appkefu_comment_description">请为此客服打分</string>
+    <string name="appkefu_comment_good">满意</string>
+    <string name="appkefu_comment_ok">一般</string>
+    <string name="appkefu_comment_bad">很差</string>
+    <string name="appkefu_comment_thanks">多谢您的评价</string>
+    <string name="appkefu_comment_request">客服发起满意度评价</string>
+    
+    <string name="appkefu_free_apis">咨询客服</string>
+    <string name="appkefu_free_faq">常见问题FAQ</string>
+    <string name="appkefu_free_tags">设置用户标签</string>
+    
+    <string name="appkefu_vip_apis">排队咨询(测试中)</string>
+    <string name="appkefu_vip_top_right">自定义右上角按钮</string>
+    <string name="appkefu_vip_callbacks">这是回调函数，当用户点击会话页面右上角按钮的时候调用, 回调之后的页面由开发者自行定义, 此接口非免费接口,具体收费请参见官方网站：http://appkefu.com</string>
+    
+    <string name="appkefu_greetings">您好，我是微客服小秘书，请问有什么可以帮您的?</string>
+    <string name="appkefu_chat">咨询客服</string>
+    
+    <string name="appkefu_minuites_ago">分钟前</string>
+    <string name="appkefu_hours_ago">小时前</string>
+    <string name="appkefu_yestoday">昨天</string>
+    <string name="appkefu_the_day_before_yestoday">前天</string>
+    <string name="appkefu_days_ago">天前</string>
+    
 </resources>
 
 

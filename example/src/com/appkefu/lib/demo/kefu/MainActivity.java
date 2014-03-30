@@ -6,11 +6,8 @@ import org.jivesoftware.smack.util.StringUtils;
 import com.appkefu.lib.interfaces.KFInterfaces;
 import com.appkefu.lib.service.KFMainService;
 import com.appkefu.lib.service.KFXmppManager;
-import com.appkefu.lib.ui.activity.KFFAQSectionsActivity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,8 +23,10 @@ import android.content.IntentFilter;
  * 
  * 微客服，集成到您App里的在线客服
  * 国内首款App里的在线客服，支持文字、表情、图片、语音聊天。 立志为移动开发者提供最好的在线客服
- * 
+ *  
  * 技术交流QQ群:48661516
+ * 
+ * 客服开发文档： http://appkefu.com/AppKeFu/tutorial-android.html
  * 
  * @author jack ning, http://github.com/pengjinning
  *
@@ -50,21 +49,14 @@ public class MainActivity extends Activity implements OnClickListener{
 	 */            
 	 
 	private TextView mTitle;
-	private Button   mChatBtn;
-	//private Button 	 mQChatBtn;
-	private Button   mFAQBtn;
-	
-	//客服用户名，需要填写为真实的客服用户名，需要到管理后台(http://appkefu.com/AppKeFu/admin/),分配
-	private String 			  mKefuUsername;
+	private Button  mFreeApiBtn;
+	private Button  mVIPAPIBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//与admin会话,实际应用中需要将admin替换为真实的客服用户名			
-		mKefuUsername = "admin";
-		
 		//初始化资源
 		initView();
 		
@@ -84,13 +76,6 @@ public class MainActivity extends Activity implements OnClickListener{
         
         registerReceiver(mXmppreceiver, intentFilter); 
 	} 
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		checkKeFuOnlineThread();
-	}
 
 	@Override
 	protected void onStop() {
@@ -102,16 +87,15 @@ public class MainActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
+		Intent intent;
 		switch(view.getId()) 
 		{
-		case R.id.chat_button:
-			chatWithKeFu(mKefuUsername);			
+		case R.id.free_api_button:
+		    intent = new Intent(this, FreeAPIDemoActivity.class);
+			startActivity(intent);
 			break;
-		//case R.id.queue_chat_button:
-		//	startQueueChat("demo");
-		//	break;
-		case R.id.faq_button:
-			Intent intent = new Intent(this, KFFAQSectionsActivity.class);
+		case R.id.vip_api_button:
+			intent = new Intent(this, VIPAPIDemoActivity.class);
 			startActivity(intent);
 			break;
 		default:
@@ -127,17 +111,11 @@ public class MainActivity extends Activity implements OnClickListener{
 		//界面标题
 		mTitle = (TextView) findViewById(R.id.demo_title);
 		
-		//咨询客服button
-		mChatBtn = (Button) findViewById(R.id.chat_button);
-		mChatBtn.setOnClickListener(this);
+		mFreeApiBtn = (Button) findViewById(R.id.free_api_button);
+		mFreeApiBtn.setOnClickListener(this);
 		
-		//
-		//mQChatBtn = (Button) findViewById(R.id.queue_chat_button);
-		//mQChatBtn.setOnClickListener(this);
-		
-		//
-		mFAQBtn = (Button) findViewById(R.id.faq_button);
-		mFAQBtn.setOnClickListener(this);
+		mVIPAPIBtn = (Button) findViewById(R.id.vip_api_button);
+		mVIPAPIBtn.setOnClickListener(this);
 	}
 	
 	//监听：连接状态、即时通讯消息、客服在线状态
@@ -163,22 +141,7 @@ public class MainActivity extends Activity implements OnClickListener{
         }
     };
     
-	//启动咨询对话框
-	private void chatWithKeFu(String kefuUsername)
-	{
-		KFInterfaces.startChatWithKeFu(this,
-				kefuUsername, //客服用户名
-				"您好，我是微客服小秘书，请问有什么可以帮您的?",  //问候语
-				"咨询客服");//会话窗口标题
-	}
-	
-	//开启排队会话，此接口尚处于测试阶段，仅限于测试
-	//private void startQueueChat(String workgrouName)
-	//{
-	//	KFInterfaces.startQueueChat(this, workgrouName, "咨询客服");
-	//}
-
-  //根据监听到的连接变化情况更新界面显示
+   //根据监听到的连接变化情况更新界面显示
     private void updateStatus(int status) {
 
     	switch (status) {
@@ -186,14 +149,7 @@ public class MainActivity extends Activity implements OnClickListener{
             	mTitle.setText("微客服(客服Demo)");
 
         		//设置昵称，否则在客服客户端 看到的会是一串字符串(必须在登录成功之后才能调用，才有效)
-        		//KFInterfaces.setVisitorNickname("访客1", this);
-        		
-        		//
-        		//Boolean isWorkgroupOnline = KFInterfaces.isWorkgroupOnline(this,"demo");
-        		//if(isWorkgroupOnline)
-        		//	KFLog.dd("isWorkgroupOnline");
-        		//else
-        		//	KFLog.dd("is not WorkgroupOnline");
+        		KFInterfaces.setVisitorNickname("访客_微客服(客服Demo)", this);
 
                 break;
             case KFXmppManager.DISCONNECTED:
@@ -212,39 +168,6 @@ public class MainActivity extends Activity implements OnClickListener{
             default:
                 throw new IllegalStateException();
         }
-    }
-       
-    //检测客服是否在线
-    private void checkKeFuOnlineThread() 
-    {
-    	final Handler handler = new Handler() 
-    	{
-    		public void handleMessage(Message msg) 
-  			{
-    			Boolean isOnline = (Boolean)msg.obj;
-    			if(isOnline)
-    			{
-    				mChatBtn.setText("咨询客服(在线)");
-    			}
-    			else
-    			{
-    				mChatBtn.setText("咨询客服(离线)");
-    			}
-  			}
-    	};
-    	
-    	new Thread() 
-  		{
-  			public void run() 
-  			{
-  				Message msg = new Message();
-
-  				//检测客服是否在线，需要在非主线程中执行
-  				msg.obj = KFInterfaces.isKeFuOnlineSync(mKefuUsername);
-  				
-  				handler.sendMessage(msg);
-  			}
-  		}.start();
     }
     
 }
